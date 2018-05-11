@@ -3,8 +3,6 @@ class SnekTail {
   int speed = 5;
   int x;
   int y;
-  int moveX = (int)nodes.get(nodes.size() - 2);
-  int moveY = (int)nodes.get(nodes.size() - 1);
   
   SnekTail(int count) {
     this.count = count;
@@ -34,30 +32,19 @@ class SnekTail {
     rect(x, y, 25, 25);
    }
   
-  void move() {
-    if (y == mySnekHead.y && velocity == 2) {
-     x += speed;
-    } else if (y == mySnekHead.y && velocity == -2) {
-     x -= speed;
-    } else if (x == mySnekHead.x && velocity == 1) {
-     y -= speed; 
-    } else if (x == mySnekHead.x && velocity == -1) {
-     y += speed; 
-    } else if(x > moveX) {
-     x -= speed;
-    } else if (x < moveX) {
-     x += speed;
-    } else if (y < moveY) {
-     y += speed;
-    } else if (y > moveY) {
-     y -= speed;
-    } else if (y == moveY && x == moveX) {
-     setNode();
-    }
-   }
-   
-   void setNode() {
-      moveX = (int)nodes.get(moveX+2);
-      moveY = (int)nodes.get(moveY+2);
-   }
+  void moveRight() {
+    x += speed;
+  }
+  
+  void moveLeft() {
+    x -= speed;
+  }
+  
+  void moveUp() {
+    y -= speed;
+  }
+  
+  void moveDown() {
+    y += speed;
+  }
 }
