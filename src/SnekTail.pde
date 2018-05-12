@@ -1,29 +1,41 @@
 class SnekTail {
-  int count;
-  int speed = 5;
+  int speed = 25;
   int x;
   int y;
   
-  SnekTail(int count) {
-    this.count = count;
-    if (mySnekTail[0] == null) {
-      x = mySnekHead.x;
-      y = mySnekHead.y;
-    } else {
-      SnekTail lastSegment = mySnekTail[mySnekTail.length - 1];
-      if (velocity == 1) {
-        x = lastSegment.x;
-        y = lastSegment.y+25;
-      } else if (velocity == -1) {
-       x = lastSegment.x;
-       y = lastSegment.y-25;
-      } else if (velocity == 2) {
-       x = lastSegment.x-25;
-       y = lastSegment.y;
-      } else if (velocity == -2) {
-       x = lastSegment.x+25;
-       y = lastSegment.y;
-      }
+  SnekTail() {
+    if(follow.get(follow.size()-1) == "Up") {
+     if(mySnekTail[0] != null) {
+       x = mySnekTail[mySnekTail.length-1].x;
+       y = mySnekTail[mySnekTail.length-1].y+25;
+     } else {
+       x = mySnekHead.x; 
+       y = mySnekHead.y+25;
+     }
+    } else if(follow.get(follow.size()-1) == "Down") {
+     if(mySnekTail[0] != null) {
+       x = mySnekTail[mySnekTail.length-1].x;
+       y = mySnekTail[mySnekTail.length-1].y-25;
+     } else {
+       x = mySnekHead.x; 
+       y = mySnekHead.y-25;
+     }
+    } else if(follow.get(follow.size()-1) == "Right") {
+     if(mySnekTail[0] != null) {
+       x = mySnekTail[mySnekTail.length-1].x-25;
+       y = mySnekTail[mySnekTail.length-1].y;
+     } else {
+       x = mySnekHead.x-25; 
+       y = mySnekHead.y;
+     }
+    } else if(follow.get(follow.size()-1) == "Left") {
+     if(mySnekTail[0] != null) {
+       x = mySnekTail[mySnekTail.length-1].x+25;
+       y = mySnekTail[mySnekTail.length-1].y;
+     } else {
+       x = mySnekHead.x+25; 
+       y = mySnekHead.y;
+     }
     }
   }
   
